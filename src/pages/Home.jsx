@@ -1,20 +1,23 @@
-import "../styles/Home.css"
-import { useRef, useState } from "react";
+import "../styles/Home.css";
+import { useNavigate } from "react-router-dom";
+import { use, useEffect, useRef, useState } from "react";
 
 const Home = () => {
     const availableGames = useRef({
         gameOne: {
             name: "Arrow Dance",
-            url: "/game-one",
+            url: "game-one",
         },
         gameTwo: {
             name: "Find Pairs",
-            url: "/game-two",
+            url: "game-two",
         }
     });
     const [targetGame, setTargetGame] = useState(
         JSON.parse(localStorage.getItem("selected-game")) || availableGames.current.gameOne
     );
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -23,7 +26,7 @@ const Home = () => {
                 <h2>Selected game: {targetGame.name}</h2>
                 <div className="actions-wrapper">
                     <button onClick={() => {
-                        window.location.href = targetGame.url;
+                        navigate(targetGame.url);
                     }}>
                         Start Game
                     </button>

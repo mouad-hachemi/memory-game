@@ -8,14 +8,14 @@ const GameTwo = () => {
     const [grid, setGrid] = useState({});
     const [time, setTime] = useState(0);
     const [gameStarted, setGameStarted] = useState(false);
-    const [gameLevel, setGameLevel] = useState(0);
+    const [gameLevel, setGameLevel] = useState("newBorn");
     const [scores, setScores] = useState(JSON.parse(localStorage.getItem("scores")) || []);
     const levelsRef = useRef({
-        0: 4,
-        1: 16,
-        2: 36,
-        3: 64,
-        4: 100
+        newBorn: 4,
+        child: 16,
+        secondaryStudent: 36,
+        graduate: 64,
+        einstein: 100
     });
     const timoutFiredRef = useRef(false);
     const startTimeRef = useRef(0);
@@ -52,11 +52,11 @@ const GameTwo = () => {
                                 setScores((prev) => {
                                     const newScore = [...prev];
                                     const levels = {
-                                        0: "New Born",
-                                        1: "Child",
-                                        2: "Secondary Student",
-                                        3: "Graduate",
-                                        4: "Einstein",
+                                        newBorn: "New Born",
+                                        child: "Child",
+                                        secondaryStudent: "Secondary Student",
+                                        graduate: "Graduate",
+                                        einstein: "Einstein",
                                     }
 
                                     newScore.push({
@@ -67,7 +67,7 @@ const GameTwo = () => {
                                     });
                                     return newScore;
                                 })
-                                resetGame(2000);
+                                resetGame(800);
                             };
                             return newPairs;
                         });
@@ -105,12 +105,12 @@ const GameTwo = () => {
             setTime(0);
             scoreSavedRef.current = false;
             setTimeout(() => {
-                setGrid(generateGrid());
+                setGrid(generateGrid(gameLevel));
                 missesRef.current = 0;
                 oneShotsRef.current = 0;
             }, 200);
         }, delay);
-    }, []);
+    }, [gameLevel]);
 
     const getGridStyle = () => ({
         gridTemplateColumns: `repeat(${Math.sqrt(levelsRef.current[gameLevel])}, 36px)`,
@@ -129,7 +129,7 @@ const GameTwo = () => {
     }
 
     useEffect(() => {
-        setGrid(generateGrid());
+        setGrid(generateGrid(gameLevel));
     }, [gameLevel]);
 
     useEffect(() => {
@@ -190,7 +190,6 @@ const GameTwo = () => {
                                 if (gameStarted) {
                                     resetGame();
                                 } else setGameStarted(true);
-                                // setGameFinished((prev) => !prev);
                             }}>
                         {gameStarted ? "Stop Game" : "Start Game"}
                     </button>
@@ -201,11 +200,11 @@ const GameTwo = () => {
                         value={gameLevel}
                         onChange={(e) => setGameLevel(e.target.value)}
                     >
-                        <option value="0">New Born</option>
-                        <option value="1">Child</option>
-                        <option value="2">Secondary Student</option>
-                        <option value="3">Graduate</option>
-                        <option value="4">Einstein</option>
+                        <option value="newBorn">New Born</option>
+                        <option value="child">Child</option>
+                        <option value="secondaryStudent">Secondary Student</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="einstein">Einstein</option>
                     </select>
                 </div>}
                 <div className="score-board">
@@ -224,9 +223,9 @@ const GameTwo = () => {
         </>
     );
 
-    function generateGrid() {
+    function generateGrid(level) {
         let halfGrid = [];
-        for (let i = 0; i < levelsRef.current[gameLevel] / 2; i++) {
+        for (let i = 0; i < levelsRef.current[level] / 2; i++) {
             let randNumb = Math.floor(Math.random() * 100);
             while (halfGrid.find((element) => element == randNumb)) {
                 randNumb = Math.floor(Math.random() * 100);

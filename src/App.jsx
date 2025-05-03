@@ -6,11 +6,11 @@ import GameTwo from './pages/GameTwo';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/memory-game/">
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='game-one' element={<GameOne />} />
-        <Route path='game-two' element={<GameTwo />} />
+        <Route path='/game-one' element={<GameOne />} />
+        <Route path='/game-two' element={<GameTwo />} />
       </Routes>
     </BrowserRouter>
   )
