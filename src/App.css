@@ -1,0 +1,33 @@
+p {
+    text-align: center;
+}
+
+.container h1,
+h2 {
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 0.5rem;
+}
+
+.container {
+    align-items: center;
+    box-shadow: 0px 3px 10px #fb6400;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+@media (max-width: 578px) {
+    p {
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,21 @@
+.actions-wrapper {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#home button {
+  padding: 0.5rem;
+  flex: 1;
+  color: white;
+  background-color: #fb4700;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px #a02d00;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#home button:hover {
+  background-color: #ff723a;
+}

@@ -1,0 +1,60 @@
+.arrows,
+.arrow-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.arrow {
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px #333;
+    color: #333;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-one p {
+    color: #333;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 3px #333;
+    background-color: white;
+    padding: 0.5rem 0;
+    border-radius: 2px;
+}
+
+.mobile-controls {
+    display: none;
+}
+
+.mobile-controls button {
+    display: block;
+    margin: auto;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #fb4700;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px #a02d00;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.arrow-buttons .arrow {
+    color: white;
+    background-color: #333;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+    .mobile-controls {
+        display: block;
+    }
+}
